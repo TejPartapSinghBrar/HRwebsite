@@ -9,6 +9,64 @@ const admins = {
     'admin2': 'adminpass2'
 };
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Load saved form data if available
+    const savedForm = JSON.parse(localStorage.getItem('applicationForm'));
+    if (savedForm) {
+        document.getElementById('name').value = savedForm.name;
+        document.getElementById('education').value = savedForm.education;
+        document.getElementById('experience').value = savedForm.experience;
+        document.getElementById('skills').value = savedForm.skills;
+    }
+
+    // Check if admin is logged in on page load
+    if (localStorage.getItem('isAdminLoggedIn')) {
+        document.getElementById('login-popup').style.display = 'none';
+        document.getElementById('admin-dashboard').style.display = 'block';
+    }
+});
+
+document.getElementById('application-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = {
+        name: document.getElementById('name').value,
+        education: document.getElementById('education').value,
+        experience: document.getElementById('experience').value,
+        skills: document.getElementById('skills').value
+    };
+
+    // Save form data to localStorage
+    localStorage.setItem('applicationForm', JSON.stringify(formData));
+
+    // Implement your form submission logic here
+    alert('Application submitted successfully!');
+});
+
+document.getElementById('admin-login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('admin-username').value;
+    const password = document.getElementById('admin-password').value;
+
+    if (admins[username] === password) {
+        document.getElementById('login-popup').style.display = 'none';
+        document.getElementById('admin-dashboard').style.display = 'block';
+        
+        // Save admin login state
+        localStorage.setItem('isAdminLoggedIn', true);
+    } else {
+        document.getElementById('login-message').textContent = 'Invalid credentials. Please try again.';
+    }
+});
+
+function logout() {
+    document.getElementById('admin-dashboard').style.display = 'none';
+    document.getElementById('login-popup').style.display = 'block';
+    
+    // Clear admin login state
+    localStorage.removeItem('isAdminLoggedIn');
+}
+
 function showPortal(portal) {
     if (portal === 'user') {
         document.getElementById('user-portal').style.display = 'block';
@@ -108,22 +166,4 @@ function showInterviewDetails(date) {
         document.getElementById('interview-venue').textContent = detail.venue;
         document.getElementById('interview-details').style.display = 'block';
     }
-}
-
-document.getElementById('admin-login-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const username = document.getElementById('admin-username').value;
-    const password = document.getElementById('admin-password').value;
-
-    if (admins[username] === password) {
-        document.getElementById('login-popup').style.display = 'none';
-        document.getElementById('admin-dashboard').style.display = 'block';
-    } else {
-        document.getElementById('login-message').textContent = 'Invalid credentials. Please try again.';
-    }
-});
-
-function logout() {
-    document.getElementById('admin-dashboard').style.display = 'none';
-    document.getElementById('login-popup').style.display = 'block';
 }
