@@ -3,216 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinity Technologies - Portals</title>
+    <title>Infinity Technologies</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <img src="WhatsApp_Image_2024-09-13_at_12.12.07_PM-removebg-preview.png" alt="Company Logo" class="logo">
-        <h1 class="c_name">Infinity Technologies</h1>
+        <img src="logo.png" alt="Company Logo" class="logo">
+        <h1 id="infinity-technologies" class="c_name">Infinity Technologies</h1>
     </header>
- 
 
-    <div id="portal-select">
-        <button onclick="showPortal('user')">User Login</button>
-        <button onclick="showPortal('admin')">Admin Login</button>
-    </div>
-
-    
-    <div id="user-portal" style="display: none;">
-        <div class="vacancies-container">
-            <div id="box1" class="job-card">
-               
-                <h3>Frontend Developer</h3>
-                <p>Looking for a skilled Frontend Developer with experience in React.js, HTML, and CSS.</p>
-                <button onclick="showForm()">Apply Now</button>
-            </div>
-            <div id="box2" class="job-card">
-               
-                <h3>Backend Developer</h3>
-                <p>We need a Backend Developer with expertise in Node.js, Express, and MongoDB.</p>
-                <button onclick="showForm()">Apply Now</button>
-            </div>
-            <div id="box3" class="job-card">
-               
-                <h3>UI/UX Designer</h3>
-                <p>Looking for a creative UI/UX designer with strong skills in Figma and Adobe XD.</p>
-                <button onclick="showForm()">Apply Now</button>
-            </div>
-            <div id="box4" class="job-card">
-               
-                <h3>Full Stack Developer</h3>
-                <p>Looking for a versatile Full Stack Developer with experience in both frontend and backend technologies.</p>
-                <button onclick="showForm()">Apply Now</button>
-            </div>
+    <main>
+        <div id="login-container">
+            <h2 id="login" class="centered-heading">Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
         </div>
 
-        <div id="form-container" style="display:none;">
-            <h2 id="bkl">Application Form</h2>
-            <form id="application-form">
-                <div class="form-row">
+        <div id="user-dashboard" style="display: none;">
+            <div id="user-content"></div>
+        </div>
+
+        <div id="admin-dashboard" style="display: none;">
+            <div id="admin-content"></div>
+        </div>
+
+        <div id="application-form" style="display: none;">
+            <h2 class="centered-heading">Application Form</h2>
+            <form id="job-application-form">
+                <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" required>
+                    <input type="text" id="name" name="name" required>
                 </div>
-                <div class="form-row">
+                <div class="form-group">
                     <label for="education">Education:</label>
-                    <input type="text" id="education" required>
+                    <textarea id="education" name="education" required></textarea>
                 </div>
-                <div class="form-row">
+                <div class="form-group">
                     <label for="experience">Previous Work Experience:</label>
-                    <input type="text" id="experience" required>
+                    <textarea id="experience" name="experience" required></textarea>
                 </div>
-                <div class="form-row">
+                <div class="form-group">
                     <label for="skills">Skills:</label>
-                    <input type="text" id="skills" required>
+                    <textarea id="skills" name="skills" required></textarea>
                 </div>
-                <div class="form-row">
-                    <label for="govt-id">Upload Govt ID Proof:</label>
-                    <input type="file" id="govt-id" required>
+                <div class="form-group">
+                    <label for="id-proof">Upload Govt ID Proof:</label>
+                    <input type="file" id="id-proof" name="id-proof" required>
                 </div>
-                <div class="form-row">
+                <div class="form-group">
                     <label for="resume">Upload Resume:</label>
-                    <input type="file" id="resume" required>
+                    <input type="file" id="resume" name="resume" required>
                 </div>
-
-                <h3>Select Interview Date</h3>
-                <table class="calendar">
-                    <tr>
-                        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-                    </tr>
-                    <tr>
-                        <td>6</td><td class="highlight">7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
-                    </tr>
-                    <tr>
-                        <td>13</td><td>14</td><td class="highlight">15</td><td>16</td><td>17</td><td>18</td><td>19</td>
-                    </tr>
-                    <tr>
-                        <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
-                    </tr>
-                    <tr>
-                        <td>27</td><td class="highlight">28</td><td>29</td><td>30</td><td></td><td></td><td></td>
-                    </tr>
-                </table>
-                <p id="selected-date"></p>
-
-                <button type="submit">Submit Application</button>
-                <button type="button" onclick="backToCards()">Back</button>
+                <div class="form-group">
+                    <label for="interview-date">Preferred Interview Date:</label>
+                    <input type="date" id="interview-date" name="interview-date" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-primary">Submit Application</button>
+                    <button type="button" class="btn-secondary" onclick="backToUserDashboard()">Back</button>
+                </div>
             </form>
         </div>
-    </div>
-
-    
-    <div id="admin-portal" style="display: none;">
-        
-        <div id="login-popup">
-            <h2>Admin Login</h2>
-            <form id="admin-login-form">
-                <label for="admin-username">Username:</label>
-                <input type="text" id="admin-username" required>
-                <label for="admin-password">Password:</label>
-                <input type="password" id="admin-password" required>
-                <div class="button-container">
-                    <button type="submit" class="admin-login-btn">Login</button>
-                </div>
-                
-                <p id="login-message"></p>
-            </form>
-            <p> Username: admin1 <3 Password: adminpass1</p>
-        </div>
-
-        
-        <div id="admin-dashboard" style="display:none;">
-            <div id="centerdash"> <h2 id="dash" >Admin Dashboard</h2>
-            <button onclick="showVacancies()">Show Vacancies</button>
-            <button onclick="showTeams()">Show Teams</button>
-            <button onclick="logout()">Logout</button></div>
-            
-            
-            <div id="vacancy-list" style="display:none;">
-                <h3>Vacancies to be Filled</h3>
-                <div class="vacancy-card">
-                    <h4>Frontend Developer</h4>
-                    <p>Description: Looking for a skilled Frontend Developer with experience in React.js, HTML, and CSS.</p>
-                </div>
-                <div class="vacancy-card">
-                    <h4>Backend Developer</h4>
-                    <p>Description: We need a Backend Developer with expertise in Node.js, Express, and MongoDB.</p>
-                </div>
-                <div class="vacancy-card">
-                    <h4>UI/UX Designer</h4>
-                    <p>Description: Looking for a creative UI/UX designer with strong skills in Figma and Adobe XD.</p>
-                </div>
-                <div class="vacancy-card">
-                    <h4>Full Stack Developer</h4>
-                    <p>Description: Looking for a versatile Full Stack Developer with experience in both frontend and backend technologies.</p>
-                </div>
-            </div>
-
-            
-            <div id="team-list" style="display:none;">
-                <h3>Teams</h3>
-                <div class="team-card" onclick="showTeamInfo('team1')">
-                    <h4>Team Alpha</h4>
-                    <p>Project: AI Development</p>
-                    <p>Members: 5</p>
-                </div>
-                <div class="team-card" onclick="showTeamInfo('team2')">
-                    <h4>Team Beta</h4>
-                    <p>Project: Web Applications</p>
-                    <p>Members: 4</p>
-                </div>
-                <div class="team-card" onclick="showTeamInfo('team3')">
-                    <h4>Team Gamma</h4>
-                    <p>Project: Mobile Apps</p>
-                    <p>Members: 6</p>
-                </div>
-                <div class="team-card" onclick="showTeamInfo('team4')">
-                    <h4>Team Delta</h4>
-                    <p>Project: Cybersecurity</p>
-                    <p>Members: 3</p>
-                </div>
-            </div>
-
-            
-            <div id="team-info" style="display:none;">
-                <h3>Team Information</h3>
-                <div id="team-details"></div>
-            </div>
-
-          
-            <div id="calendar-container">
-                <h3>Hiring Drive Calendar</h3>
-                <table class="calendar">
-                    <tr>
-                        <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
-                    </tr>
-                    <tr>
-                        <td>6</td><td class="highlight" onclick="showInterviewDetails('2024-09-07')">7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
-                    </tr>
-                    <tr>
-                        <td>13</td><td>14</td><td class="highlight" onclick="showInterviewDetails('2024-09-15')">15</td><td>16</td><td>17</td><td>18</td><td>19</td>
-                    </tr>
-                    <tr>
-                        <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
-                    </tr>
-                    <tr>
-                        <td>27</td><td class="highlight" onclick="showInterviewDetails('2024-09-28')">28</td><td>29</td><td>30</td><td></td><td></td><td></td>
-                    </tr>
-                </table>
-                <div id="interview-details" style="display:none;">
-                    <p>Date: <span id="interview-date"></span></p>
-                    <p>Time: <span id="interview-time"></span></p>
-                    <p>Venue: <span id="interview-venue"></span></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <script src="app.js"></script>
 </body>
