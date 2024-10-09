@@ -1,188 +1,181 @@
+:root {
+    --primary-color: #3a506b;
+    --secondary-color: #5bc0be;
+    --accent-color: #ff9f1c;
+    --background-color: #f0f3f5;
+    --text-color: #1c2541;
+    --card-background: #ffffff;
+    --danger-color: #e63946;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121315;
-    color: #e0e0e0;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 header {
-    background-color: #1c1c1e;
+    background-color: var(--primary-color);
     color: white;
-    padding: 10px;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header img {
-    height: 60px;
+    height: 50px;
     margin-right: 20px;
 }
 
 .c_name {
     margin: 0;
+    font-size: 24px;
 }
 
-#portal-select {
+.centered-heading {
     text-align: center;
-    margin-top: 70px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
-#portal-select button {
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    background-color: #6A0DAD;
-    color: white;
-    border: none;
-    border-radius: 5px;
+#login-container, #user-dashboard, #admin-dashboard, #application-form {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.job-card {
-    background-color: #2c2c2e;
-    border: 1px solid #3a3a3c;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    color: #e0e0e0;
-    width: 45%;
-    margin: 10px auto;
+#user-dashboard, #admin-dashboard {
+    max-width: 800px;
 }
 
-.job-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.vacancies-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
-#form-container {
-    margin-top: 20px;
-}
-
-#form-container h2 {
-    text-align: center;
-    color: #e0e0e0;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: auto;
-    color: #e0e0e0;
-    /* align-items: center; */
-}
-
-.form-row {
-    margin-bottom: 15px;
+.form-group {
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--primary-color);
 }
 
-input[type="text"], input[type="file"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="date"], textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #3a3a3c;
+    border: 1px solid #bdc3c7;
     border-radius: 4px;
-    background-color: #1c1c1e;
-    color: #e0e0e0;
+    font-size: 16px;
 }
 
 button {
+    background-color: var(--secondary-color);
+    color: white;
     padding: 10px 20px;
-    margin-top: 10px;
-    cursor: pointer;
     border: none;
-    border-radius: 5px;
-    /* align-self: stretch; */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-button[type="submit"] {
-    background-color: #6A0DAD;
-    color: white;
-    
+button:hover {
+    background-color: #4ca5a3;
 }
 
-button[type="button"] {
-    background-color: #6C757D;
-    color: white;
-}
-.button-container {
-    width: 100%;
+.user-nav, .admin-nav {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.admin-login-btn {
-    padding: 10px;
-    margin-top: 10px;
-    margin-left: 20px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    width: 100%;
+#vacancies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-
-table.calendar {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #1c1c1e;
-}
-
-table.calendar th, table.calendar td {
-    border: 1px solid #3a3a3c;
-    padding: 10px;
-    text-align: center;
-    color: #e0e0e0;
-}
-
-table.calendar .highlight {
-    background-color: #26507d;
-    color: white;
-    cursor: pointer;
-}
-
-#login-popup {
-    text-align: center;
-    margin-top: 20px;
-    color: #e0e0e0;
-}
-
-#admin-dashboard {
-    margin-top: 20px;
-    color: #e0e0e0;
-}
-
-.vacancy-card, .team-card {
-    background-color: #2c2c2e;
-    border: 1px solid #3a3a3c;
-    border-radius: 10px;
-    margin: 10px;
+.vacancy-card {
+    background-color: var(--card-background);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
     padding: 20px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#team-details {
+.vacancy-card h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    text-align: center;
+}
+
+#admin-content, #user-content {
+    background-color: var(--card-background);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
     margin-top: 20px;
-    color: #e0e0e0;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* New styles */
+.btn-primary {
+    background-color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+    background-color: #4ca5a3;
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+}
+
+.btn-accent:hover {
+    background-color: #e58e1a;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #c62f3b;
+}
+
+.logout-btn {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c62f3b;
+}
+
+.admin-action-btn {
+    margin-top: 20px;
+    background-color: var(--accent-color);
+}
+
+.admin-action-btn:hover {
+    background-color: #e58e1a;
 }
